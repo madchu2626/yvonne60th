@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yvonne's 60th</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --pink: #e8a0bf;
+      --coral: #f4845f;
+      --sand: #f5e6ca;
+      --sage: #a3b18a;
+      --dark: #2d3436;
+      --white: #fff;
+      --light-bg: #fdf8f0;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'DM Sans', 'Helvetica Neue', Arial, sans-serif;
+      color: var(--dark);
+      background: var(--light-bg);
+      line-height: 1.6;
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, var(--coral) 0%, var(--pink) 50%, var(--sage) 100%);
+      color: var(--white);
+      text-align: center;
+      padding: 80px 20px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.15) 0%, transparent 60%);
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 3.2rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+      position: relative;
+    }
+    .hero .subtitle {
+      font-size: 1.15rem;
+      opacity: 0.9;
+      font-weight: 400;
+      position: relative;
+    }
+    .hero .dates {
+      margin-top: 16px;
+      font-size: 1rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 500;
+      position: relative;
+    }
+
+    /* Trail map */
+    .trail-map {
+      margin-top: 16px;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .trail-map img {
+      max-width: 100%;
+      max-height: 500px;
+      height: auto;
+      display: block;
+      border-radius: 8px;
+      object-fit: contain;
+    }
+
+    /* Navigation */
+    nav {
+      background: var(--white);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 16px;
+      flex-wrap: wrap;
+    }
+    nav a {
+      text-decoration: none;
+      color: var(--dark);
+      padding: 8px 18px;
+      border-radius: 25px;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+      border: 1px solid #ddd;
+    }
+    nav a:hover, nav a:focus {
+      background: var(--coral);
+      color: var(--white);
+      border-color: var(--coral);
+    }
+
+    /* Content */
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Day sections */
+    .day-section {
+      margin: 40px 0;
+    }
+    .day-header {
+      background: var(--white);
+      border-left: 5px solid var(--coral);
+      padding: 20px 28px;
+      margin-bottom: 24px;
+      border-radius: 0 12px 12px 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .day-header h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.8rem;
+      font-weight: 500;
+      color: var(--coral);
+    }
+    .day-header p {
+      color: #666;
+      margin-top: 4px;
+    }
+
+    /* Event cards */
+    .event {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 16px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .event-time {
+      min-width: 80px;
+      font-size: 0.85rem;
+      color: var(--coral);
+      font-weight: 700;
+      padding-top: 2px;
+      white-space: nowrap;
+    }
+    .event-body h3 {
+      font-size: 1.05rem;
+      margin-bottom: 4px;
+    }
+    .event-body p, .event-body ul {
+      font-size: 0.95rem;
+      color: #555;
+    }
+    .event-body ul {
+      margin: 8px 0 0 18px;
+    }
+    .event-body ul li {
+      margin-bottom: 3px;
+    }
+
+    /* Activity tags */
+    .tag {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-right: 6px;
+      margin-bottom: 6px;
+    }
+    .tag-cycling { background: #dbeafe; color: #1e40af; }
+    .tag-fitness { background: #fce7f3; color: #9d174d; }
+    .tag-hiking { background: #d1fae5; color: #065f46; }
+    .tag-food { background: #fef3c7; color: #92400e; }
+    .tag-social { background: #ede9fe; color: #5b21b6; }
+    .tag-sports { background: #ffedd5; color: #9a3412; }
+    .tag-wellness { background: #f0fdf4; color: #166534; }
+    .tag-kids { background: #fdf2f8; color: #831843; }
+
+    /* Highlight boxes */
+    .highlight {
+      background: linear-gradient(135deg, var(--sand), #fef3c7);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin: 20px 0;
+      text-align: center;
+      font-size: 1rem;
+      color: #78350f;
+    }
+    .highlight strong { font-size: 1.05rem; }
+
+    /* Info section */
+    .info-section {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin: 30px 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .info-section h3 {
+      font-size: 1.2rem;
+      margin-bottom: 12px;
+      color: var(--sage);
+      border-bottom: 2px solid var(--sage);
+      padding-bottom: 6px;
+    }
+    .info-section p, .info-section ul {
+      font-size: 0.95rem;
+      color: #555;
+    }
+    .info-section ul {
+      margin: 8px 0 0 18px;
+    }
+    .info-section a {
+      color: var(--coral);
+      text-decoration: underline;
+    }
+
+    /* FAQ accordion */
+    details {
+      border-bottom: 1px solid #eee;
+      padding: 12px 0;
+    }
+    details:last-of-type {
+      border-bottom: none;
+    }
+    details summary {
+      cursor: pointer;
+      font-size: 0.95rem;
+      list-style: none;
+    }
+    details summary::-webkit-details-marker { display: none; }
+    details summary::before {
+      content: '+';
+      display: inline-block;
+      width: 20px;
+      color: var(--coral);
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+    details[open] summary::before { content: '−'; }
+    details p {
+      margin-top: 8px;
+      padding-left: 20px;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    /* Dinner sub-schedule */
+    .sub-schedule {
+      margin: 12px 0 0 0;
+      border-left: 3px solid var(--pink);
+      padding-left: 16px;
+    }
+    .sub-schedule .sub-item {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 6px;
+    }
+    .sub-schedule .sub-time {
+      font-weight: 700;
+      min-width: 70px;
+      color: var(--pink);
+      font-size: 0.9rem;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: #999;
+      font-size: 0.85rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 2rem; }
+      .hero { padding: 50px 16px 40px; }
+      .event { flex-direction: column; gap: 4px; }
+      .event-time { min-width: auto; }
+      nav a { font-size: 0.8rem; padding: 6px 12px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hero">
+    <h1>🦩 Yvonne's 60th 🦩</h1>
+    <p class="subtitle">Flamingo Resort, Santa Rosa</p>
+    <p class="dates">April 3 &ndash; 5, 2026</p>
+  </div>
+
+  <nav>
+    <a href="#friday">Friday</a>
+    <a href="#saturday">Saturday</a>
+    <a href="#sunday">Sunday</a>
+    <a href="#fitness">Fitness Center</a>
+    <a href="#childcare">Childcare</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+
+  <div class="container">
+
+    <!-- FRIDAY -->
+    <section class="day-section" id="friday">
+      <div class="day-header">
+        <h2>Friday, April 3</h2>
+      </div>
+
+      <div class="event">
+        <div class="event-time">Afternoon</div>
+        <div class="event-body">
+          <h3>🔑 Check In</h3>
+          <p>Check-in is at 4 pm. For dinner, dine at the on-site restaurant or by the pool.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SATURDAY -->
+    <section class="day-section" id="saturday">
+      <div class="day-header">
+        <h2>Saturday, April 4</h2>
+      </div>
+
+      <!-- Breakfast -->
+      <div class="event">
+        <div class="event-time">7 &ndash; 9 am</div>
+        <div class="event-body">
+          <span class="tag tag-food">Food</span>
+          <h3>🍳 Breakfast</h3>
+          <p>Good selection at the Flamingo; walk 1&ndash;4 blocks for other options.</p>
+        </div>
+      </div>
+
+      <!-- Cycling -->
+      <div class="event">
+        <div class="event-time">8:30 am</div>
+        <div class="event-body">
+          <span class="tag tag-cycling">Cycling</span>
+          <h3>🚴 Bike Ride</h3>
+          <p>Meet Howard by front entrance for a 3&ndash;4 hour ride.</p>
+        </div>
+      </div>
+
+      <!-- Barre Fusion -->
+      <div class="event">
+        <div class="event-time">9:30 am</div>
+        <div class="event-body">
+          <span class="tag tag-fitness">Fitness</span>
+          <h3>🩰 Barre Fusion</h3>
+          <p>Flamingo fitness center (see sign-up info below; free).</p>
+        </div>
+      </div>
+
+      <!-- Hiking -->
+      <div class="event">
+        <div class="event-time">9:00 am</div>
+        <div class="event-body">
+          <span class="tag tag-hiking">Hiking</span>
+          <h3>🥾 Hike at Trione-Annadel Park</h3>
+          <p>Meet Yvonne by front entrance &mdash; drive 11 min to the park.</p>
+          <p style="margin-top:8px;"><strong>Central Annadel Loop</strong> &mdash; 5.2 miles, 754 ft elevation, 2&ndash;2.5 hours</p>
+          <ul>
+            <li>Start at park entrance (end of Channel Drive)</li>
+            <li>Channel trail north</li>
+            <li>Left at N Burma Trail &rarr; straight onto Live Oak Trail &rarr; Rough Go Trail</li>
+            <li>Circle around the lake on Canyon trail</li>
+            <li>Right onto Warren Richardson Trail</li>
+            <li>Left onto Steve's S Trail back to parking</li>
+          </ul>
+          <p style="margin-top:8px; font-style:italic; color:#777;">Folks can add on extra loops for a longer hike.</p>
+          <div class="trail-map">
+            <img src="trail-map.png" alt="Trione-Annadel State Park trail map">
+          </div>
+        </div>
+      </div>
+
+      <!-- Yoga -->
+      <div class="event">
+        <div class="event-time">11:30 am</div>
+        <div class="event-body">
+          <span class="tag tag-wellness">Wellness</span>
+          <h3>🧘 Vinyasa Yoga</h3>
+          <p>Flamingo fitness center (see sign-up info below; free).</p>
+        </div>
+      </div>
+
+      <!-- Lunch -->
+      <div class="highlight">
+        <strong>🍽️ Lunch</strong><br>
+        Enjoy lunch at the resort or explore many local restaurants.
+      </div>
+
+      <div class="highlight">
+        <strong>☀️ Lounge &amp; Relax</strong><br>
+        Hang by the pool or treat yourself to a massage at the spa.
+      </div>
+
+      <!-- Pickleball -->
+      <div class="event">
+        <div class="event-time">2 &ndash; 4 pm</div>
+        <div class="event-body">
+          <span class="tag tag-sports">Sports</span>
+          <h3>🏓 Pickleball</h3>
+          <p>Courts 1 and 2 reserved for our group. There are 8 courts total &mdash; usually not busy in afternoons.</p>
+        </div>
+      </div>
+
+      <!-- Dinner -->
+      <div class="event">
+        <div class="event-time">5 &ndash; 9 pm</div>
+        <div class="event-body">
+          <span class="tag tag-social">Celebration</span>
+          <h3>🥂 Dinner hosted by Jane Wu</h3>
+          <p>Spoken Space (by the 200 building)</p>
+          <div class="sub-schedule">
+            <div class="sub-item">
+              <span class="sub-time">5 &ndash; 6 pm</span>
+              <span><strong>Drinks</strong> &mdash; cocktails, wine, beer, etc. (no food until 6 pm)</span>
+            </div>
+            <div class="sub-item">
+              <span class="sub-time">6 &ndash; 7:30</span>
+              <span><strong>Buffet Dinner</strong></span>
+            </div>
+            <div class="sub-item">
+              <span class="sub-time">7:15 pm</span>
+              <span><strong>Grab desserts &amp; coffee/tea</strong> before they are taken away at 7:30</span>
+            </div>
+          </div>
+          <p style="margin-top:12px; font-style:italic; color:#777;">Room is ours until 9 pm &mdash; set up bridge table? Knitting group by the pool? Guitar sing-along?</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SUNDAY -->
+    <section class="day-section" id="sunday">
+      <div class="day-header">
+        <h2>Sunday, April 5</h2>
+      </div>
+
+      <div class="event">
+        <div class="event-time">8:00 am+</div>
+        <div class="event-body">
+          <span class="tag tag-food">Food</span>
+          <h3>☕ Breakfast (Optional) &mdash; Jeffrie's Hillside Caf&eacute;</h3>
+          <p>2901 4th St (5 min walk). Opens 8:00 am. Gets crowded by 10 am with wait times. Join if you'd like!</p>
+        </div>
+      </div>
+
+      <div class="event">
+        <div class="event-time">11:00 am</div>
+        <div class="event-body">
+          <span class="tag tag-wellness">Wellness</span>
+          <h3>🧘 Yoga Class</h3>
+          <p>Flamingo fitness center &mdash; Yvonne would love company for this!</p>
+        </div>
+      </div>
+
+      <div class="event">
+        <div class="event-time">12:00 pm</div>
+        <div class="event-body">
+          <h3>👋 Check Out</h3>
+          <p>Check-out is at 12 pm.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FITNESS CENTER -->
+    <section class="info-section" id="fitness">
+      <h3>Fitness Center</h3>
+      <p><strong>Phone:</strong> 707-526-0529</p>
+      <p style="margin-top:8px;">Call to reserve a spot in classes &mdash; can reserve up to 2 weeks in advance. Tell them you are staying at the Flamingo for a group event.</p>
+      <p style="margin-top:8px;">You can also sign up for a lane in the lap pool.</p>
+      <p style="margin-top:8px;"><a href="https://www.flamingoresort.com/membership/zingfit/#/schedule/site/3/st/72bcdebb-2ae5-4b26-9361-0cd2af092e99" target="_blank">View weekly class schedule</a></p>
+    </section>
+
+    <!-- CHILDCARE -->
+    <section class="info-section" id="childcare">
+      <h3>Childcare</h3>
+      <p><strong>$26 per hour</strong> &mdash; max 2 hours per child.</p>
+      <ul>
+        <li>Babysitters in a room with outdoor play area, targeted towards toddlers</li>
+        <li>Outside area with basketball hoop, toys</li>
+        <li>Art supplies are basic: markers, crayons, paper</li>
+      </ul>
+      <p style="margin-top:12px;"><strong>Hours:</strong></p>
+      <ul>
+        <li>Friday: 7 am &ndash; 8 pm</li>
+        <li>Saturday: 7 am &ndash; 7 pm</li>
+        <li>Sunday: 7 am &ndash; 6 pm</li>
+      </ul>
+    </section>
+
+    <!-- FAQ -->
+    <section class="info-section" id="faq">
+      <h3>Resort FAQ</h3>
+      <p style="margin-bottom: 12px;">More info at <a href="https://www.flamingoresort.com" target="_blank">flamingoresort.com</a></p>
+
+      <details>
+        <summary><strong>What time is check-in &amp; check-out?</strong></summary>
+        <p>Check-in is at 4 pm and check-out is at 12 pm. A $100 nightly hold is placed on credit cards for incidentals. Early check-in/late checkout available upon request at 707-545-8530.</p>
+      </details>
+
+      <details>
+        <summary><strong>What is in the rooms?</strong></summary>
+        <p>Flat-screen TV, air conditioning/heater, mini refrigerator, complimentary coffee/tea service, hair dryer, iron and ironing board, and voicemail access.</p>
+      </details>
+
+      <details>
+        <summary><strong>Is the resort pet-friendly?</strong></summary>
+        <p>Dogs are the only pets permitted. Fee: $50/dog daily, maximum two dogs per room.</p>
+      </details>
+
+      <details>
+        <summary><strong>Do you accept cash?</strong></summary>
+        <p>The Flamingo is a cashless property and does not accept cash for payments. Cash gratuities are welcome.</p>
+      </details>
+
+      <details>
+        <summary><strong>Where is the nearest airport?</strong></summary>
+        <p>Santa Rosa Airport (STS) is under 15 minutes away. San Francisco (SFO), Oakland (OAK), and Sacramento (SMF) also serve the area.</p>
+      </details>
+
+      <details>
+        <summary><strong>What is the smoking/vaping policy?</strong></summary>
+        <p>The Flamingo is a non-smoking property. Violations incur a $250 cleaning fee. Cannabis smoking restricted to designated areas only.</p>
+      </details>
+
+      <details>
+        <summary><strong>What are the pool hours?</strong></summary>
+        <p>Central pool operates 7:00 am to 10:00 pm daily. Separate lap swimming pool available by reservation.</p>
+      </details>
+
+      <details>
+        <summary><strong>Is there a restaurant on-site?</strong></summary>
+        <p>Flamingo Lazeaway Club serves breakfast, lunch, and dinner. Poolside mobile ordering is also available.</p>
+      </details>
+
+      <details>
+        <summary><strong>What are the resort quiet hours?</strong></summary>
+        <p>Quiet hours are 10 pm &ndash; 7 am every day.</p>
+      </details>
+
+      <details>
+        <summary><strong>Is there a fee for extra adults in a room?</strong></summary>
+        <p>Additional guests are charged $20 per night, plus tax. Children under 12 stay free with existing bedding.</p>
+      </details>
+
+      <details>
+        <summary><strong>Do you offer rollaway beds?</strong></summary>
+        <p>Limited availability at $35/night, first come first served. Contact Guest Services at 707-545-8530 to reserve.</p>
+      </details>
+
+      <details>
+        <summary><strong>What is the cancellation policy?</strong></summary>
+        <p>Cancellations must be made at least 48 hours prior to arrival to avoid a one night's room rate penalty.</p>
+      </details>
+
+      <details>
+        <summary><strong>What are the taxes and fees?</strong></summary>
+        <p>Daily Resort Fee: $35/room plus tax. Occupancy Tax: 11%, County Tourism Tax: 2%, CA Tourism Tax: 0.195%, Santa Rosa BZ Assessment: 3%.</p>
+      </details>
+
+      <details>
+        <summary><strong>Is WiFi included?</strong></summary>
+        <p>Yes, high-speed WiFi is included in the resort fee and available property-wide.</p>
+      </details>
+    </section>
+
+  </div>
+
+  <footer>
+    <p style="margin-bottom: 8px;">🦩 Questions? Email Maddy at <a href="mailto:maddychung@gmail.com" style="color: var(--coral);">maddychung@gmail.com</a> 🦩</p>
+    🦩 Yvonne's 60th &middot; Flamingo Resort, Santa Rosa 🦩
+  </footer>
+
+</body>
+</html>
