@@ -291,6 +291,36 @@
       font-size: 0.85rem;
     }
 
+    /* Photo cutouts */
+    .hero-photos {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 24px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-photos img {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.3));
+      transition: transform 0.3s ease;
+    }
+    .hero-photos img:hover {
+      transform: scale(1.2) rotate(3deg);
+    }
+    .hero-photos img:nth-child(even):hover {
+      transform: scale(1.2) rotate(-3deg);
+    }
+    .hero-photos img:nth-child(1) { transform: rotate(-8deg); }
+    .hero-photos img:nth-child(2) { transform: rotate(5deg); }
+    .hero-photos img:nth-child(3) { transform: rotate(-3deg); }
+    .hero-photos img:nth-child(4) { transform: rotate(7deg); }
+    .hero-photos img:nth-child(5) { transform: rotate(-5deg); }
+    .hero-photos img:nth-child(6) { transform: rotate(4deg); }
+
     /* Responsive */
     @media (max-width: 600px) {
       .hero h1 { font-size: 2rem; }
@@ -299,6 +329,8 @@
       .event-time { min-width: auto; }
       nav a { font-size: 0.8rem; padding: 6px 12px; }
       .day-section, .info-section { scroll-margin-top: 110px; }
+      .hero-photos img { width: 55px; height: 55px; }
+      .hero-photos { gap: 8px; }
     }
   </style>
 </head>
@@ -308,6 +340,14 @@
     <h1>🦩 Yvonne's 60th 🦩</h1>
     <p class="subtitle">Flamingo Resort, Santa Rosa</p>
     <p class="dates">April 3 &ndash; 5, 2026</p>
+    <div class="hero-photos">
+      <img src="IMG_0372.png" alt="Yvonne">
+      <img src="IMG_0780.png" alt="Yvonne">
+      <img src="IMG_7168.png" alt="Yvonne">
+      <img src="IMG_7335.png" alt="Yvonne">
+      <img src="IMG_7812.png" alt="Yvonne">
+      <img src="IMG_2425.png" alt="Yvonne">
+    </div>
   </div>
 
   <nav>
